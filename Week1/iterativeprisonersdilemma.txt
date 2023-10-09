@@ -1,0 +1,20 @@
+Name of the Strategy: Strategy
+Initial State: 0
+
+Strategy: 
+0: C, 1, 4
+1: C, 2, 4
+2: C, 3, 4
+3: D, 0, 4
+4: D, 0, 4
+
+Motivation:
+Since there will be a lot of rounds, consistent cooperation seems to be the best strategy. However, we want to implement a winning strategy and every once in a while defect after creating trust by cooperating for 3 rounds. 
+
+After this defection we go back to our circle of cooperation and hope to create trust again with our opponent. 
+
+If our opponent defects just once, we will defect until our opponent cooperates again, bringing us back to our circle of trust. 
+
+This means we have a hopefully winning strategy against people who always cooperate by creating trust between us, and don't lose by a big margin against people who often defect. 
+
+Image form: https://i.imgur.com/g7a6rJW.png

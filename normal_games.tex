@@ -1,0 +1,904 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% NORMAL-FORM GAMES TYPESETTING %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% NEW COMMANDS FOR NORMAL-FORM GAMES
+
+% Colours for row player (Rowena) and column player (Colin)
+\definecolor{darkred}{rgb}{0.64,0,0}
+\definecolor{darkcyan}{rgb}{0,0.55,0.55}
+\newcommand{\rowcolor}[1]{\textcolor{darkred}{#1}}
+\newcommand{\columncolor}[1]{\textcolor{darkcyan}{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 2x2 standard one
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nfgametwoxtwo{T B L R RTL RTR RBL RBR CTL CTR CBL CBR}
+\newcommand{\nfgametwoxtwo}[1]{%
+\getargsC{#1}
+\begin{tikzpicture}[scale=0.65]
+
+% Nodes and their labels
+\node (RT) at (-2,1) [label=left:\rowcolor{\argi}] {};
+\node (RB) at (-2,-1) [label=left:\rowcolor{\argii}] {};
+\node (CL) at (-1,2) [label=above:\columncolor{\argiii}] {};
+\node (CR) at (1,2) [label=above:\columncolor{\argiv}] {};
+
+% Row player utilities
+\node (RTL) at (-1.4,0.6) {\rowcolor{\argv}}; 
+\node (RTR) at (0.6,0.6) {\rowcolor{\argvi}};
+\node (RBL) at (-1.4,-1.4) {\rowcolor{\argvii}};
+\node (RBR) at (0.6,-1.4) {\rowcolor{\argviii}};
+
+% Column player utilities
+\node (CTL) at (-0.6,1.4) {\columncolor{\argix}};
+\node (CTR) at (1.4,1.4) {\columncolor{\argx}};
+\node (CBL) at (-0.6,-0.6) {\columncolor{\argxi}};
+\node (CBR) at (1.4,-0.6) {\columncolor{\argxii}};
+
+% Horizontal and vertical thick lines
+\draw[-,very thick] (-2,-2) to (2,-2); % bottom horizontal line
+\draw[-,very thick] (-2,0) to (2,0); % middle horizontal
+\draw[-,very thick] (-2,2) to (2,2); % top horizontal
+\draw[-,very thick] (-2,-2) to (-2,2); % left vertical
+\draw[-,very thick] (0,-2) to (0,2); % middle vertical
+\draw[-,very thick] (2,-2) to (2,2); % right vertical
+
+% Diagonal lines
+\draw[-,very thin] (-2,2) to (0,0); % top left diagonal
+\draw[-,very thin] (0,0) to (2,-2); % bottom right diagonal
+\draw[-,very thin] (-2,0) to (0,-2); % bottom left diagonal
+\draw[-,very thin] (0,2) to (2,0); % top right diagonal
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 3x3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\nfgamethreexthree}[1]{%
+\getargsC{#1}
+\begin{tikzpicture}[scale=0.65]
+
+\node (RT) at (-2,1) [label=left:\rowcolor{\argi}] {};
+\node (RM) at (-2,-1) [label=left:\rowcolor{\argii}] {};
+\node (RB) at (-2,-3) [label=left:\rowcolor{\argiii}] {};
+\node (CL) at (-1,2) [label=above:\columncolor{\argiv}] {};
+\node (CM) at (1,2) [label=above:\columncolor{\argv}] {};
+\node (CR) at (3,2) [label=above:\columncolor{\argvi}] {};
+
+% row player
+\node (RTL) at (-1.4,0.6) {\rowcolor{\argvii}}; 
+\node (RTM) at (0.6,0.6) {\rowcolor{\argviii}};
+\node (RTR) at (2.6,0.6) {\rowcolor{\argix}};
+
+\node (RML) at (-1.4,-1.4) {\rowcolor{\argx}};
+\node (RMM) at (0.6,-1.4) {\rowcolor{\argxi}};
+\node (RMR) at (2.6,-1.4) {\rowcolor{\argxii}};
+
+\node (RBL) at (-1.4,-3.4) {\rowcolor{\argxiii}};
+\node (RBM) at (0.6,-3.4) {\rowcolor{\argxiv}};
+\node (RBR) at (2.6,-3.4) {\rowcolor{\argxv}};
+
+% column player
+\node (CTL) at (-0.6,1.4) {\columncolor{\argxvi}};
+\node (CTM) at (1.4,1.4) {\columncolor{\argxvii}};
+\node (CTR) at (3.4,1.4) {\columncolor{\argxviii}};
+
+\node (CML) at (-0.6,-0.6) {\columncolor{\argxix}};
+\node (CMM) at (1.4,-0.6) {\columncolor{\argxx}};
+\node (CMR) at (3.4,-0.6) {\columncolor{\argxxi}};
+
+\node (CBL) at (-0.6,-2.6) {\columncolor{\argxxii}};
+\node (CBM) at (1.4,-2.6) {\columncolor{\argxxiii}};
+\node (CBR) at (3.4,-2.6) {\columncolor{\argxxiv}};
+
+% original lines
+\draw[-,very thick] (-2,-2) to (2,-2);
+\draw[-,very thick] (-2,0) to (2,0);
+
+\draw[-,very thick] (-2,2) to (2,2);
+\draw[-,very thick] (-2,-2) to (-2,2);
+\draw[-,very thick] (0,-2) to (0,2);
+\draw[-,very thick] (2,-2) to (2,2);
+\draw[-,very thin] (-2,2) to (0,0);
+\draw[-,very thin] (0,0) to (2,-2);
+\draw[-,very thin] (-2,0) to (0,-2);
+\draw[-,very thin] (0,2) to (2,0);
+
+% horizontals on the right
+\draw[-,very thick] (2,2) to (4,2);
+\draw[-,very thick] (2,0) to (4,0);
+\draw[-,very thick] (2,-2) to (4,-2);
+\draw[-,very thick] (2,-4) to (4,-4);
+
+% verticals on the right
+\draw[-,very thick] (4,2) to (4,0);
+\draw[-,very thick] (4,0) to (4,-2);
+\draw[-,very thick] (4,-2) to (4,-4);
+
+% verticals at the bottom row
+\draw[-,very thick] (-2,-2) to (-2,-4);
+\draw[-,very thick] (0,-2) to (0,-4);
+\draw[-,very thick] (2,-2) to (2,-4);
+
+% horizontals at the bottom row
+\draw[-,very thick] (-2,-4) to (0,-4);
+\draw[-,very thick] (0,-4) to (2,-4);
+
+% diagonals on the bottom row
+\draw[-,very thin] (-2,-2) to (0,-4);
+\draw[-,very thin] (0,-2) to (2,-4);
+\draw[-,very thin] (2,-2) to (4,-4);
+
+% diagonals on the right row
+\draw[-,very thin] (2,2) to (4,0);
+\draw[-,very thin] (2,0) to (4,-2);
+
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 1x1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nfgameonexone{T L RTL CTL}
+\newcommand{\nfgameonexone}[1]{%
+\getargsC{#1}
+\begin{tikzpicture}[scale=0.65]
+
+% Nodes and their labels
+\node (RT) at (-2,1) [label=left:\rowcolor{\argi}] {};
+\node (CL) at (-1,2) [label=above:\columncolor{\argii}] {};
+
+% Row player utility of cell
+\node (RTL) at (-1.4,0.6) {\rowcolor{\argiii}};
+
+% Column player utility of cell
+\node (CTL) at (-0.6,1.4) {\columncolor{\argiv}};
+
+% Drawing lines of the matrix
+\draw[-,very thick] (-2,0) to (0,0); % bottom horizontal
+\draw[-,very thick] (-2,2) to (0,2); % top horizontal
+
+\draw[-,very thick] (-2,0) to (-2,2); % left vertical
+\draw[-,very thick] (0,0) to (0,2); % right vertical
+
+\draw[-,very thin] (-2,2) to (0,0); % diagonal
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 1x2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nfgameonextwo{T L R RTL RTR CTL CTR}
+\newcommand{\nfgameonextwo}[1]{%
+\getargsC{#1}
+\begin{tikzpicture}[scale=0.65]
+
+% Nodes and their labels
+\node (RT) at (-2,1) [label=left:\rowcolor{\argi}] {};
+\node (CL) at (-1,2) [label=above:\columncolor{\argii}] {};
+\node (CR) at (1,2) [label=above:\columncolor{\argiii}] {};
+
+% Row player utilities
+\node (RTL) at (-1.4,0.6) {\rowcolor{\argiv}}; 
+\node (RTR) at (0.6,0.6) {\rowcolor{\argv}};
+
+% Column player utilities
+\node (CTL) at (-0.6,1.4) {\columncolor{\argvi}};
+\node (CTR) at (1.4,1.4) {\columncolor{\argvii}};
+
+% Horizontal and vertical thick lines
+\draw[-,very thick] (-2,0) to (2,0); % bottom horizontal
+\draw[-,very thick] (-2,2) to (2,2); % top horizontal
+
+\draw[-,very thick] (-2,0) to (-2,2); % left vertical
+\draw[-,very thick] (0,0) to (0,2); % middle vertical
+\draw[-,very thick] (2,0) to (2,2); % right vertical
+
+% Diagonal lines
+\draw[-,very thin] (-2,2) to (0,0); % left diagonal
+\draw[-,very thin] (0,2) to (2,0); % right diagonal
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 2x1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nfgametwoxone{T B L RTL RBL CTL}
+\newcommand{\nfgametwoxone}[1]{%
+\getargsC{#1}
+\begin{tikzpicture}[scale=0.65]
+
+% Nodes and their labels
+\node (RT) at (-2,1) [label=left:\rowcolor{\argi}] {};
+\node (RB) at (-2,-1) [label=left:\rowcolor{\argii}] {};
+\node (CL) at (-1,2) [label=above:\columncolor{\argiii}] {};
+
+% Row player utilities
+\node (RTL) at (-1.4,0.6) {\rowcolor{\argiv}}; 
+\node (RBL) at (-1.4,-1.4) {\rowcolor{\argv}};
+
+% Column player utilities
+\node (CTL) at (-0.6,1.4) {\columncolor{\argvi}};
+\node (CBL) at (-0.6,-0.6) {\columncolor{\argvii}};
+
+% Horizontal and vertical thick lines
+\draw[-,very thick] (-2,-2) to (0,-2); % bottom horizontal line
+\draw[-,very thick] (-2,0) to (0,0); % middle horizontal
+\draw[-,very thick] (-2,2) to (0,2); % top horizontal
+
+\draw[-,very thick] (-2,-2) to (-2,2); % left vertical
+\draw[-,very thick] (0,-2) to (0,2); % right vertical
+
+% Diagonal lines
+\draw[-,very thin] (-2,2) to (0,0); % top diagonal
+\draw[-,very thin] (-2,0) to (0,-2); % bottom diagonal
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 3x2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nfgamethreextwo{T M B L R RTL RTR RML RMR RBL RBR CTL CTR CML CMR CBL CBR}
+\newcommand{\nfgamethreextwo}[1]{%
+\getargsC{#1}
+\begin{tikzpicture}[scale=0.65]
+
+% Nodes and their labels
+\node (RT) at (-2,1) [label=left:\rowcolor{\argi}] {};
+\node (RM) at (-2,-1) [label=left:\rowcolor{\argii}] {};
+\node (RB) at (-2,-3) [label=left:\rowcolor{\argiii}] {};
+\node (CL) at (-1,2) [label=above:\columncolor{\argiv}] {};
+\node (CR) at (1,2) [label=above:\columncolor{\argv}] {};
+
+% Row player utilities
+\node (RTL) at (-1.4,0.6) {\rowcolor{\argvi}}; 
+\node (RTR) at (0.6,0.6) {\rowcolor{\argvii}};
+\node (RML) at (-1.4,-1.4) {\rowcolor{\argviii}};
+\node (RMR) at (0.6,-1.4) {\rowcolor{\argix}};
+\node (RBL) at (-1.4,-3.4) {\rowcolor{\argx}};
+\node (RBM) at (0.6,-3.4) {\rowcolor{\argxi}};
+
+% Column player utilities
+\node (CTL) at (-0.6,1.4) {\columncolor{\argxii}};
+\node (CTR) at (1.4,1.4) {\columncolor{\argxiii}};
+\node (CML) at (-0.6,-0.6) {\columncolor{\argxiv}};
+\node (CMR) at (1.4,-0.6) {\columncolor{\argxv}};
+\node (CBL) at (-0.6,-2.6) {\columncolor{\argxvi}};
+\node (CBR) at (1.4,-2.6) {\columncolor{\argxvii}};
+
+% Horizontal and vertical thick lines
+\draw[-,very thick] (-2,-2) to (2,-2); % bottom horizontal line
+\draw[-,very thick] (-2,0) to (2,0); % top middle horizontal
+\draw[-,very thick] (-2,2) to (2,2); % bottom middle horizontal
+\draw[-,very thick] (-2,-4) to (2,-4); % bottom horizontal
+
+\draw[-,very thick] (-2,-4) to (-2,2); % left vertical
+\draw[-,very thick] (0,-4) to (0,2); % middle vertical
+\draw[-,very thick] (2,-4) to (2,2); % right vertical
+
+% Diagonal lines
+\draw[-,very thin] (-2,2) to (0,0); % top left diagonal
+\draw[-,very thin] (0,2) to (2,0); % top right diagonal
+
+\draw[-,very thin] (-2,0) to (0,-2); % middle left diagonal
+\draw[-,very thin] (0,0) to (2,-2); % middle right diagonal
+
+\draw[-,very thin] (-2,-2) to (0,-4); % middle left diagonal
+\draw[-,very thin] (0,-2) to (2,-4); % middle right diagonal
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 2x3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nfgametwoxthree{T B L C R RTL RTC RTR RBL RBC RBR CTL CTC CTR CBL CBC CBR}
+\newcommand{\nfgametwoxthree}[1]{%
+\getargsC{#1}
+\begin{tikzpicture}[scale=0.65]
+
+% Nodes and their labels
+\node (RT) at (-2,1) [label=left:\rowcolor{\argi}] {};
+\node (RB) at (-2,-1) [label=left:\rowcolor{\argii}] {};
+
+\node (CL) at (-1,2) [label=above:\columncolor{\argiii}] {};
+\node (CC) at (1,2) [label=above:\columncolor{\argiv}] {};
+\node (CR) at (3,2) [label=above:\columncolor{\argv}] {};
+
+% Row player utilities
+\node (RTL) at (-1.4,0.6) {\rowcolor{\argvi}}; 
+\node (RTC) at (0.6,0.6) {\rowcolor{\argvii}};
+\node (RTR) at (2.6,0.6) {\rowcolor{\argviii}};
+\node (RBL) at (-1.4,-1.4) {\rowcolor{\argix}};
+\node (RBC) at (0.6,-1.4) {\rowcolor{\argx}};
+\node (RBR) at (2.6,-1.4) {\rowcolor{\argxi}};
+
+% Column player utilities
+\node (CTL) at (-0.6,1.4) {\columncolor{\argxii}};
+\node (CTC) at (1.4,1.4) {\columncolor{\argxiii}};
+\node (CTR) at (3.4,1.4) {\columncolor{\argxiv}};
+\node (CBL) at (-0.6,-0.6) {\columncolor{\argxv}};
+\node (CBC) at (1.4,-0.6) {\columncolor{\argxvi}};
+\node (CBR) at (3.4,-0.6) {\columncolor{\argxvii}};
+
+% Horizontal and vertical thick lines
+\draw[-,very thick] (-2,-2) to (4,-2); % bottom horizontal line
+\draw[-,very thick] (-2,0) to (4,0); % middle horizontal
+\draw[-,very thick] (-2,2) to (4,2); % top horizontal
+\draw[-,very thick] (-2,-2) to (-2,2); % left vertical
+\draw[-,very thick] (0,-2) to (0,2); % left middle vertical
+\draw[-,very thick] (2,-2) to (2,2); % right midde vertical
+\draw[-,very thick] (4,-2) to (4,2); % right midde vertical
+
+% Diagonal lines
+\draw[-,very thin] (-2,2) to (0,0); % top left diagonal
+\draw[-,very thin] (0,2) to (2,0); % top center diagonal
+\draw[-,very thin] (2,2) to (4,0); % top right diagonal
+
+\draw[-,very thin] (-2,0) to (0,-2); % bottom left diagonal
+\draw[-,very thin] (0,0) to (2,-2); % bottom center diagonal
+\draw[-,very thin] (2,0) to (4,-2); % bottom center diagonal
+
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 3x1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nfgamethreexone{T M B L RTL RML RBL CTL CML CBL}
+\newcommand{\nfgamethreexone}[1]{%
+\getargsC{#1}
+\begin{tikzpicture}[scale=0.65]
+
+% Nodes and their labels
+\node (RT) at (-2,1) [label=left:\rowcolor{\argi}] {};
+\node (RM) at (-2,-1) [label=left:\rowcolor{\argii}] {};
+\node (RB) at (-2,-3) [label=left:\rowcolor{\argiii}] {};
+\node (CL) at (-1,2) [label=above:\columncolor{\argiv}] {};
+
+% Row player utilities
+\node (RTL) at (-1.4,0.6) {\rowcolor{\argv}}; 
+\node (RML) at (-1.4,-1.4) {\rowcolor{\argvi}};
+\node (RBL) at (-1.4,-3.4) {\rowcolor{\argvii}};
+
+% Column player utilities
+\node (CTL) at (-0.6,1.4) {\columncolor{\argviii}};
+\node (CML) at (-0.6,-0.6) {\columncolor{\argix}};
+\node (CBL) at (-0.6,-2.6) {\columncolor{\argx}};
+
+% Horizontal and vertical thick lines
+\draw[-,very thick] (-2,-2) to (0,-2); % bottom horizontal line
+\draw[-,very thick] (-2,0) to (0,0); % top middle horizontal
+\draw[-,very thick] (-2,2) to (0,2); % bottom middle horizontal
+\draw[-,very thick] (-2,-4) to (0,-4); % bottom horizontal
+
+\draw[-,very thick] (-2,-4) to (-2,2); % left vertical
+\draw[-,very thick] (0,-4) to (0,2); % right vertical
+
+% Diagonal lines
+\draw[-,very thin] (-2,2) to (0,0); % top left diagonal
+\draw[-,very thin] (-2,0) to (0,-2); % middle left diagonal
+\draw[-,very thin] (-2,-2) to (0,-4); % middle left diagonal
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 1x3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nfgameonexthree{T L C R RTL RTC RTR CTL CTC CTR}
+\newcommand{\nfgameonexthree}[1]{%
+\getargsC{#1}
+\begin{tikzpicture}[scale=0.65]
+
+% Nodes and their labels
+\node (RT) at (-2,1) [label=left:\rowcolor{\argi}] {};
+\node (CL) at (-1,2) [label=above:\columncolor{\argii}] {};
+\node (CC) at (1,2) [label=above:\columncolor{\argiii}] {};
+\node (CR) at (3,2) [label=above:\columncolor{\argiv}] {};
+
+% Row player utilities
+\node (RTL) at (-1.4,0.6) {\rowcolor{\argv}}; 
+\node (RTC) at (0.6,0.6) {\rowcolor{\argvi}};
+\node (RTR) at (2.6,0.6) {\rowcolor{\argvii}};
+
+% Column player utilities
+\node (CTL) at (-0.6,1.4) {\columncolor{\argviii}};
+\node (CTC) at (1.4,1.4) {\columncolor{\argix}};
+\node (CTR) at (3.4,1.4) {\columncolor{\argx}};
+
+% Horizontal and vertical thick lines
+\draw[-,very thick] (-2,0) to (4,0); % bottom horizontal
+\draw[-,very thick] (-2,2) to (4,2); % top horizontal
+
+\draw[-,very thick] (-2,0) to (-2,2); % left vertical
+\draw[-,very thick] (0,0) to (0,2); % left middle vertical
+\draw[-,very thick] (2,0) to (2,2); % right midde vertical
+\draw[-,very thick] (4,0) to (4,2); % right midde vertical
+
+% Diagonal lines
+\draw[-,very thin] (-2,2) to (0,0); % top left diagonal
+\draw[-,very thin] (0,2) to (2,0); % top center diagonal
+\draw[-,very thin] (2,2) to (4,0); % top right diagonal
+
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 4x4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nfgamefourxfour{T UM LM B L LC RC R RTL RTLC RTRC RTR RUML RUMLC RUMRC RUMR RLML RLMLC RLMRC RLMR RBL RBLC RBRC RBR CTL CTLC CTRC CTR CUML CUMLC CUMRC CUMR CLML CLMLC CLMRC CLMR CBL CBLC CBRC CBR}
+\newcommand{\nfgamefourxfour}[1]{%
+\getargsC{#1}
+\begin{tikzpicture}[scale=0.65]
+
+% Nodes and their labels
+
+% The four rows of the row player
+\node (RT) at (-2,1) [label=left:\rowcolor{\argi}] {};
+\node (RUM) at (-2,-1) [label=left:\rowcolor{\argii}] {};
+\node (RLM) at (-2,-3) [label=left:\rowcolor{\argiii}] {};
+\node (RB) at (-2,-5) [label=left:\rowcolor{\argiv}] {};
+
+% The four columns of the column player
+\node (CL) at (-1,2) [label=above:\columncolor{\argv}] {};
+\node (CLC) at (1,2) [label=above:\columncolor{\argvi}] {};
+\node (CRC) at (3,2) [label=above:\columncolor{\argvii}] {};
+\node (CR) at (5,2) [label=above:\columncolor{\argviii}] {};
+
+% Utilities
+
+% Row player utilities
+\node (RTL) at (-1.4,0.6) {\rowcolor{\argix}}; 
+\node (RTLC) at (0.6,0.6) {\rowcolor{\argx}};
+\node (RTRC) at (2.6,0.6) {\rowcolor{\argxi}};
+\node (RTR) at (4.6,0.6) {\rowcolor{\argxii}};
+
+\node (RUML) at (-1.4,-1.4) {\rowcolor{\argxiii}};
+\node (RUMLC) at (0.6,-1.4) {\rowcolor{\argxiv}};
+\node (RUMRC) at (2.6,-1.4) {\rowcolor{\argxv}};
+\node (RUMR) at (4.6,-1.4) {\rowcolor{\argxvi}};
+
+\node (RLML) at (-1.4,-3.4) {\rowcolor{\argxvii}};
+\node (RLMLC) at (0.6,-3.4) {\rowcolor{\argxviii}};
+\node (RLMRC) at (2.6,-3.4) {\rowcolor{\argxix}};
+\node (RLMR) at (4.6,-3.4) {\rowcolor{\argxx}};
+
+\node (RBL) at (-1.4,-5.4) {\rowcolor{\argxxi}};
+\node (RBLC) at (0.6,-5.4) {\rowcolor{\argxxii}};
+\node (RBRC) at (2.4,-5.4) {\rowcolor{\argxxiii}};
+\node (RBR) at (4.6,-5.4) {\rowcolor{\argxxiv}};
+
+% Column player utilities
+\node (CTL) at (-0.6,1.4) {\columncolor{\argxxv}};
+\node (CTLC) at (1.4,1.4) {\columncolor{\argxxvi}};
+\node (CTRC) at (3.4,1.4) {\columncolor{\argxxvii}};
+\node (CTR) at (5.4,1.4) {\columncolor{\argxxviii}};
+
+\node (CUML) at (-0.6,-0.6) {\columncolor{\argxxix}};
+\node (CUMLC) at (1.4,-0.6) {\columncolor{\argxxx}};
+\node (CUMRC) at (3.4,-0.6) {\columncolor{\argxxxi}};
+\node (CUMR) at (5.4,-0.6) {\columncolor{\argxxxii}};
+
+\node (CLML) at (-0.6,-2.6) {\columncolor{\argxxxiii}};
+\node (CLMLC) at (1.4,-2.6) {\columncolor{\argxxxiv}};
+\node (CLMRC) at (3.4,-2.6) {\columncolor{\argxxxv}};
+\node (CLMR) at (5.4,-2.6) {\columncolor{\argxxxvi}};
+
+\node (CBL) at (-0.6,-4.6) {\columncolor{\argxxxvii}};
+\node (CBLC) at (1.4,-4.6) {\columncolor{\argxxxviii}};
+\node (CBRC) at (3.4,-4.6) {\columncolor{\argxxxix}};
+\node (CMR) at (5.4,-4.6) {\columncolor{\argxl}};
+
+% Horizontal and vertical thick lines
+\draw[-,very thick] (-2,2) to (6,2); % top horizontal
+\draw[-,very thick] (-2,0) to (6,0); % horizontal 2
+\draw[-,very thick] (-2,-2) to (6,-2); % horizontal 3
+\draw[-,very thick] (-2,-4) to (6,-4); % horizontal 4
+\draw[-,very thick] (-2,-6) to (6,-6); % bottom horizontal
+
+\draw[-,very thick] (-2,2) to (-2,-6); % left vertical
+\draw[-,very thick] (0,2) to (0,-6); % vertical 1
+\draw[-,very thick] (2,2) to (2,-6); % vertical 2
+\draw[-,very thick] (4,2) to (4,-6); % vertical 3
+\draw[-,very thick] (6,2) to (6,-6); % right vertical
+
+% Diagonal lines (from BL to TR)
+\draw[-,very thin] (-2,-4) to (0,-6); 
+\draw[-,very thin] (-2,-2) to (2,-6);
+\draw[-,very thin] (-2,0) to (4,-6); 
+\draw[-,very thin] (-2,2) to (6,-6); 
+\draw[-,very thin] (0,2) to (6,-4);
+\draw[-,very thin] (2,2) to (6,-2);
+\draw[-,very thin] (4,2) to (6,0);
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 4x3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nfgamefourxthree{T TM BM B L C R RTL RTC RTR RTML RTMC RTMR RBML RBMC RBMR RBL RBC RBR CTL CTC CTR CTML CTMC CTMR CBML CBMC CBMR CBL CBC CBR}
+\newcommand{\nfgamefourxthree}[1]{%
+\getargsC{#1}
+\begin{tikzpicture}[scale=0.65]
+
+% Nodes and their labels
+
+% The four rows of the row player
+\node (RT) at (-2,1) [label=left:\rowcolor{\argi}] {};
+\node (RUM) at (-2,-1) [label=left:\rowcolor{\argii}] {};
+\node (RLM) at (-2,-3) [label=left:\rowcolor{\argiii}] {};
+\node (RB) at (-2,-5) [label=left:\rowcolor{\argiv}] {};
+
+% The three columns of the column player
+\node (CL) at (-1,2) [label=above:\columncolor{\argv}] {};
+\node (CC) at (1,2) [label=above:\columncolor{\argvi}] {};
+\node (CR) at (3,2) [label=above:\columncolor{\argvii}] {};
+
+% Utilities
+
+% Row player utilities
+\node (RTL) at (-1.4,0.6) {\rowcolor{\argviii}}; 
+\node (RTLC) at (0.6,0.6) {\rowcolor{\argix}};
+\node (RTRC) at (2.6,0.6) {\rowcolor{\argx}};
+
+\node (RUML) at (-1.4,-1.4) {\rowcolor{\argxi}};
+\node (RUMLC) at (0.6,-1.4) {\rowcolor{\argxii}};
+\node (RUMRC) at (2.6,-1.4) {\rowcolor{\argxiii}};
+
+\node (RLML) at (-1.4,-3.4) {\rowcolor{\argxiv}};
+\node (RLMLC) at (0.6,-3.4) {\rowcolor{\argxv}};
+\node (RLMRC) at (2.6,-3.4) {\rowcolor{\argxvi}};
+
+\node (RBL) at (-1.4,-5.4) {\rowcolor{\argxvii}};
+\node (RBLC) at (0.6,-5.4) {\rowcolor{\argxviii}};
+\node (RBRC) at (2.4,-5.4) {\rowcolor{\argxix}};
+
+% Column player utilities
+\node (CTL) at (-0.6,1.4) {\columncolor{\argxx}};
+\node (CTLC) at (1.4,1.4) {\columncolor{\argxxi}};
+\node (CTRC) at (3.4,1.4) {\columncolor{\argxxii}};
+
+\node (CUML) at (-0.6,-0.6) {\columncolor{\argxxiii}};
+\node (CUMLC) at (1.4,-0.6) {\columncolor{\argxxiv}};
+\node (CUMRC) at (3.4,-0.6) {\columncolor{\argxxv}};
+
+\node (CLML) at (-0.6,-2.6) {\columncolor{\argxxvi}};
+\node (CLMLC) at (1.4,-2.6) {\columncolor{\argxxvii}};
+\node (CLMRC) at (3.4,-2.6) {\columncolor{\argxxviii}};
+
+\node (CBL) at (-0.6,-4.6) {\columncolor{\argxxix}};
+\node (CBLC) at (1.4,-4.6) {\columncolor{\argxxx}};
+\node (CBRC) at (3.4,-4.6) {\columncolor{\argxxxi}};
+
+% Horizontal and vertical thick lines
+\draw[-,very thick] (-2,2) to (4,2); % top horizontal
+\draw[-,very thick] (-2,0) to (4,0); % horizontal 2
+\draw[-,very thick] (-2,-2) to (4,-2); % horizontal 3
+\draw[-,very thick] (-2,-4) to (4,-4); % horizontal 4
+\draw[-,very thick] (-2,-6) to (4,-6); % bottom horizontal
+
+\draw[-,very thick] (-2,2) to (-2,-6); % left vertical
+\draw[-,very thick] (0,2) to (0,-6); % vertical 1
+\draw[-,very thick] (2,2) to (2,-6); % vertical 2
+\draw[-,very thick] (4,2) to (4,-6); % right vertical
+
+% Diagonal lines (from BL to TR)
+\draw[-,very thin] (-2,-4) to (0,-6); 
+\draw[-,very thin] (-2,-2) to (2,-6);
+\draw[-,very thin] (-2,0) to (4,-6); 
+\draw[-,very thin] (-2,2) to (4,-4); 
+\draw[-,very thin] (0,2) to (4,-2);
+\draw[-,very thin] (2,2) to (4,0);
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 4x2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nfgamefourxtwo{T TM BM B L R RTL RTR RTML RTMR RBML RBMR RBL RBR CTL CTR CTML CTMR CBML CBMR CBL CBR}
+\newcommand{\nfgamefourxtwo}[1]{%
+\getargsC{#1}
+\begin{tikzpicture}[scale=0.65]
+
+% Nodes and their labels
+
+% The four rows of the row player
+\node (RT) at (-2,1) [label=left:\rowcolor{\argi}] {};
+\node (RUM) at (-2,-1) [label=left:\rowcolor{\argii}] {};
+\node (RLM) at (-2,-3) [label=left:\rowcolor{\argiii}] {};
+\node (RB) at (-2,-5) [label=left:\rowcolor{\argiv}] {};
+
+% The two columns of the column player
+\node (CL) at (-1,2) [label=above:\columncolor{\argv}] {};
+\node (CR) at (1,2) [label=above:\columncolor{\argvi}] {};
+
+% Utilities
+
+% Row player utilities
+\node (RTL) at (-1.4,0.6) {\rowcolor{\argvii}}; 
+\node (RTLC) at (0.6,0.6) {\rowcolor{\argviii}};
+
+\node (RUML) at (-1.4,-1.4) {\rowcolor{\argix}};
+\node (RUMLC) at (0.6,-1.4) {\rowcolor{\argx}};
+
+\node (RLML) at (-1.4,-3.4) {\rowcolor{\argxi}};
+\node (RLMLC) at (0.6,-3.4) {\rowcolor{\argxii}};
+
+\node (RBL) at (-1.4,-5.4) {\rowcolor{\argxiii}};
+\node (RBLC) at (0.6,-5.4) {\rowcolor{\argxiv}};
+
+% Column player utilities
+\node (CTL) at (-0.6,1.4) {\columncolor{\argxv}};
+\node (CTLC) at (1.4,1.4) {\columncolor{\argxvi}};
+
+\node (CUML) at (-0.6,-0.6) {\columncolor{\argxvii}};
+\node (CUMLC) at (1.4,-0.6) {\columncolor{\argxviii}};
+
+\node (CLML) at (-0.6,-2.6) {\columncolor{\argxix}};
+\node (CLMLC) at (1.4,-2.6) {\columncolor{\argxx}};
+
+\node (CBL) at (-0.6,-4.6) {\columncolor{\argxxi}};
+\node (CBLC) at (1.4,-4.6) {\columncolor{\argxxii}};
+
+% Horizontal and vertical thick lines
+\draw[-,very thick] (-2,2) to (2,2); % top horizontal
+\draw[-,very thick] (-2,0) to (2,0); % horizontal 2
+\draw[-,very thick] (-2,-2) to (2,-2); % horizontal 3
+\draw[-,very thick] (-2,-4) to (2,-4); % horizontal 4
+\draw[-,very thick] (-2,-6) to (2,-6); % bottom horizontal
+
+\draw[-,very thick] (-2,2) to (-2,-6); % left vertical
+\draw[-,very thick] (0,2) to (0,-6); % vertical 1
+\draw[-,very thick] (2,2) to (2,-6); % right vertical
+
+% Diagonal lines (from BL to TR)
+\draw[-,very thin] (-2,-4) to (0,-6); 
+\draw[-,very thin] (-2,-2) to (2,-6);
+\draw[-,very thin] (-2,0) to (2,-4); 
+\draw[-,very thin] (-2,2) to (2,-2); 
+\draw[-,very thin] (0,2) to (2,0);
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 4x1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nfgamefourxone{T TM BM B L RTL RTML RBML RBL CTL CTML CBML CBL}
+\newcommand{\nfgamefourxone}[1]{%
+\getargsC{#1}
+\begin{tikzpicture}[scale=0.65]
+
+% Nodes and their labels
+
+% The four rows of the row player
+\node (RT) at (-2,1) [label=left:\rowcolor{\argi}] {};
+\node (RUM) at (-2,-1) [label=left:\rowcolor{\argii}] {};
+\node (RLM) at (-2,-3) [label=left:\rowcolor{\argiii}] {};
+\node (RB) at (-2,-5) [label=left:\rowcolor{\argiv}] {};
+
+% The two columns of the column player
+\node (CL) at (-1,2) [label=above:\columncolor{\argv}] {};
+
+% Utilities
+
+% Row player utilities
+\node (RTL) at (-1.4,0.6) {\rowcolor{\argvi}}; 
+\node (RTML) at (-1.4,-1.4) {\rowcolor{\argvii}};
+\node (RBML) at (-1.4,-3.4) {\rowcolor{\argviii}};
+\node (RBL) at (-1.4,-5.4) {\rowcolor{\argix}};
+
+% Column player utilities
+\node (CTL) at (-0.6,1.4) {\columncolor{\argx}};
+\node (CUML) at (-0.6,-0.6) {\columncolor{\argxi}};
+\node (CLML) at (-0.6,-2.6) {\columncolor{\argxii}};
+\node (CBL) at (-0.6,-4.6) {\columncolor{\argxiii}};
+
+% Horizontal and vertical thick lines
+\draw[-,very thick] (-2,2) to (0,2); % top horizontal
+\draw[-,very thick] (-2,0) to (0,0); % horizontal 2
+\draw[-,very thick] (-2,-2) to (0,-2); % horizontal 3
+\draw[-,very thick] (-2,-4) to (0,-4); % horizontal 4
+\draw[-,very thick] (-2,-6) to (0,-6); % bottom horizontal
+
+\draw[-,very thick] (-2,2) to (-2,-6); % left vertical
+\draw[-,very thick] (0,2) to (0,-6); % right vertical
+
+% Diagonal lines (from BL to TR)
+\draw[-,very thin] (-2,-4) to (0,-6); 
+\draw[-,very thin] (-2,-2) to (0,-4);
+\draw[-,very thin] (-2,0) to (0,-2); 
+\draw[-,very thin] (-2,2) to (0,0); 
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 3x4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nfgamethreexfour{T M B L LC RC R RTL RTLC RTRC RTR RML RMLC RMRC RMR RBL RBLC RBRC RBR CTL CTLC CTRC CTR CML CMLC CMRC CMR CBL CBLC CBRC CBR}
+\newcommand{\nfgamethreexfour}[1]{%
+\getargsC{#1}
+\begin{tikzpicture}[scale=0.65]
+
+% Nodes and their labels
+
+% The three rows of the row player
+\node (RT) at (-2,1) [label=left:\rowcolor{\argi}] {};
+\node (RUM) at (-2,-1) [label=left:\rowcolor{\argii}] {};
+\node (RLM) at (-2,-3) [label=left:\rowcolor{\argiii}] {};
+
+% The four columns of the column player
+\node (CL) at (-1,2) [label=above:\columncolor{\argiv}] {};
+\node (CLC) at (1,2) [label=above:\columncolor{\argv}] {};
+\node (CRC) at (3,2) [label=above:\columncolor{\argvi}] {};
+\node (CR) at (5,2) [label=above:\columncolor{\argvii}] {};
+
+% Utilities
+
+% Row player utilities
+\node (RTL) at (-1.4,0.6) {\rowcolor{\argviii}}; 
+\node (RTLC) at (0.6,0.6) {\rowcolor{\argix}};
+\node (RTRC) at (2.6,0.6) {\rowcolor{\argx}};
+\node (RTR) at (4.6,0.6) {\rowcolor{\argxi}};
+
+\node (RUML) at (-1.4,-1.4) {\rowcolor{\argxii}};
+\node (RUMLC) at (0.6,-1.4) {\rowcolor{\argxiii}};
+\node (RUMRC) at (2.6,-1.4) {\rowcolor{\argxiv}};
+\node (RUMR) at (4.6,-1.4) {\rowcolor{\argxv}};
+
+\node (RLML) at (-1.4,-3.4) {\rowcolor{\argxvi}};
+\node (RLMLC) at (0.6,-3.4) {\rowcolor{\argxvii}};
+\node (RLMRC) at (2.6,-3.4) {\rowcolor{\argxviii}};
+\node (RLMR) at (4.6,-3.4) {\rowcolor{\argxix}};
+
+% Column player utilities
+\node (CTL) at (-0.6,1.4) {\columncolor{\argxx}};
+\node (CTLC) at (1.4,1.4) {\columncolor{\argxxi}};
+\node (CTRC) at (3.4,1.4) {\columncolor{\argxxii}};
+\node (CTR) at (5.4,1.4) {\columncolor{\argxxiii}};
+
+\node (CUML) at (-0.6,-0.6) {\columncolor{\argxxiv}};
+\node (CUMLC) at (1.4,-0.6) {\columncolor{\argxxv}};
+\node (CUMRC) at (3.4,-0.6) {\columncolor{\argxxvi}};
+\node (CUMR) at (5.4,-0.6) {\columncolor{\argxxvii}};
+
+\node (CLML) at (-0.6,-2.6) {\columncolor{\argxxviii}};
+\node (CLMLC) at (1.4,-2.6) {\columncolor{\argxxix}};
+\node (CLMRC) at (3.4,-2.6) {\columncolor{\argxxx}};
+\node (CLMR) at (5.4,-2.6) {\columncolor{\argxxxi}};
+
+% Horizontal and vertical thick lines
+\draw[-,very thick] (-2,2) to (6,2); % top horizontal
+\draw[-,very thick] (-2,0) to (6,0); % horizontal 2
+\draw[-,very thick] (-2,-2) to (6,-2); % horizontal 3
+\draw[-,very thick] (-2,-4) to (6,-4); % bottom horizontal
+
+\draw[-,very thick] (-2,2) to (-2,-4); % left vertical
+\draw[-,very thick] (0,2) to (0,-4); % vertical 1
+\draw[-,very thick] (2,2) to (2,-4); % vertical 2
+\draw[-,very thick] (4,2) to (4,-4); % vertical 3
+\draw[-,very thick] (6,2) to (6,-4); % right vertical
+
+% Diagonal lines (from BL to TR)
+\draw[-,very thin] (-2,-2) to (0,-4);
+\draw[-,very thin] (-2,0) to (2,-4); 
+\draw[-,very thin] (-2,2) to (4,-4); 
+\draw[-,very thin] (0,2) to (6,-4);
+\draw[-,very thin] (2,2) to (6,-2);
+\draw[-,very thin] (4,2) to (6,0);
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 2x4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nfgametwoxfour{T B L LC RC R RTL RTLC RTRC RTR RBL RBLC RBRC RBR CTL CTLC CTRC CTR CBL CBLC CBRC CBR}
+\newcommand{\nfgametwoxfour}[1]{%
+\getargsC{#1}
+\begin{tikzpicture}[scale=0.65]
+
+% Nodes and their labels
+
+% The two rows of the row player
+\node (RT) at (-2,1) [label=left:\rowcolor{\argi}] {};
+\node (RUM) at (-2,-1) [label=left:\rowcolor{\argii}] {};
+
+% The four columns of the column player
+\node (CL) at (-1,2) [label=above:\columncolor{\argiii}] {};
+\node (CLC) at (1,2) [label=above:\columncolor{\argiv}] {};
+\node (CRC) at (3,2) [label=above:\columncolor{\argv}] {};
+\node (CR) at (5,2) [label=above:\columncolor{\argvi}] {};
+
+% Utilities
+
+% Row player utilities
+\node (RTL) at (-1.4,0.6) {\rowcolor{\argvii}}; 
+\node (RTLC) at (0.6,0.6) {\rowcolor{\argviii}};
+\node (RTRC) at (2.6,0.6) {\rowcolor{\argix}};
+\node (RTR) at (4.6,0.6) {\rowcolor{\argx}};
+
+\node (RUML) at (-1.4,-1.4) {\rowcolor{\argxi}};
+\node (RUMLC) at (0.6,-1.4) {\rowcolor{\argxii}};
+\node (RUMRC) at (2.6,-1.4) {\rowcolor{\argxiii}};
+\node (RUMR) at (4.6,-1.4) {\rowcolor{\argxiv}};
+
+% Column player utilities
+\node (CTL) at (-0.6,1.4) {\columncolor{\argxv}};
+\node (CTLC) at (1.4,1.4) {\columncolor{\argxvi}};
+\node (CTRC) at (3.4,1.4) {\columncolor{\argxvii}};
+\node (CTR) at (5.4,1.4) {\columncolor{\argxviii}};
+
+\node (CUML) at (-0.6,-0.6) {\columncolor{\argxix}};
+\node (CUMLC) at (1.4,-0.6) {\columncolor{\argxx}};
+\node (CUMRC) at (3.4,-0.6) {\columncolor{\argxxi}};
+\node (CUMR) at (5.4,-0.6) {\columncolor{\argxxii}};
+
+% Horizontal and vertical thick lines
+\draw[-,very thick] (-2,2) to (6,2); % top horizontal
+\draw[-,very thick] (-2,0) to (6,0); % horizontal 2
+\draw[-,very thick] (-2,-2) to (6,-2); % bottom horizontal
+
+\draw[-,very thick] (-2,2) to (-2,-2); % left vertical
+\draw[-,very thick] (0,2) to (0,-2); % vertical 1
+\draw[-,very thick] (2,2) to (2,-2); % vertical 2
+\draw[-,very thick] (4,2) to (4,-2); % vertical 3
+\draw[-,very thick] (6,2) to (6,-2); % right vertical
+
+% Diagonal lines (from BL to TR)
+\draw[-,very thin] (-2,0) to (0,-2); 
+\draw[-,very thin] (-2,2) to (2,-2); 
+\draw[-,very thin] (0,2) to (4,-2);
+\draw[-,very thin] (2,2) to (6,-2);
+\draw[-,very thin] (4,2) to (6,0);
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 1x4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nfgameonexfour{T L LC RC R RTL RTLC RTRC RTR CTL CTLC CTRC CTR}
+\newcommand{\nfgameonexfour}[1]{%
+\getargsC{#1}
+\begin{tikzpicture}[scale=0.65]
+
+% Nodes and their labels
+
+% The one row of the row player
+\node (RT) at (-2,1) [label=left:\rowcolor{\argi}] {};
+
+% The four columns of the column player
+\node (CL) at (-1,2) [label=above:\columncolor{\argii}] {};
+\node (CLC) at (1,2) [label=above:\columncolor{\argiii}] {};
+\node (CRC) at (3,2) [label=above:\columncolor{\argiv}] {};
+\node (CR) at (5,2) [label=above:\columncolor{\argv}] {};
+
+% Utilities
+
+% Row player utilities
+\node (RTL) at (-1.4,0.6) {\rowcolor{\argvi}}; 
+\node (RTLC) at (0.6,0.6) {\rowcolor{\argvii}};
+\node (RTRC) at (2.6,0.6) {\rowcolor{\argviii}};
+\node (RTR) at (4.6,0.6) {\rowcolor{\argix}};
+
+% Column player utilities
+\node (CTL) at (-0.6,1.4) {\columncolor{\argx}};
+\node (CTLC) at (1.4,1.4) {\columncolor{\argxi}};
+\node (CTRC) at (3.4,1.4) {\columncolor{\argxii}};
+\node (CTR) at (5.4,1.4) {\columncolor{\argxiii}};
+
+% Horizontal and vertical thick lines
+\draw[-,very thick] (-2,2) to (6,2); % top horizontal
+\draw[-,very thick] (-2,0) to (6,0); % bottom horizontal
+
+\draw[-,very thick] (-2,2) to (-2,0); % left vertical
+\draw[-,very thick] (0,2) to (0,0); % vertical 1
+\draw[-,very thick] (2,2) to (2,0); % vertical 2
+\draw[-,very thick] (4,2) to (4,0); % vertical 3
+\draw[-,very thick] (6,2) to (6,0); % right vertical
+
+% Diagonal lines (from BL to TR)
+\draw[-,very thin] (-2,2) to (0,0); 
+\draw[-,very thin] (0,2) to (2,0);
+\draw[-,very thin] (2,2) to (4,0);
+\draw[-,very thin] (4,2) to (6,0);
+\end{tikzpicture}}
